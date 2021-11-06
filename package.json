@@ -1,0 +1,23 @@
+{
+  "name": "note-taker",
+  "version": "1.0.0",
+  "description": "note-taker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vjain83/note-taker.git"
+  },
+  "author": "vjain83",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vjain83/note-taker/issues"
+  },
+  "homepage": "https://github.com/vjain83/note-taker#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "uniqid": "^5.4.0"
+  }
+}
