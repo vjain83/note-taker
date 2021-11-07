@@ -23,6 +23,10 @@ An application to write, save and delete notes.The notes are saved until deleted
 node server.js
 ```
 
+### Web Link:
+
+-[deployed application link on heroku ](https://salty-harbor-89480.herokuapp.com/)
+
 ### License:
 
 [![badge](https://img.shields.io/badge/License-ISC-yellow.svg)](https://opensource.org/licenses/ISC)
