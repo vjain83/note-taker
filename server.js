@@ -13,22 +13,27 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
-
-app.get('/api/notes', (req, res) => {
-    let results = notes;
-    res.json(results)
-})
-
+// Handle get request for notes html page
 app.get('/notes', (req, res) => {
     res.sendFile(path.join(__dirname, './public/notes.html'));
 });
 
+// Handle get API request
+app.get('/api/notes', (req, res) => {
+    console.log("Get request for ", req.path)
+    let results = notes;
+    console.log(notes)
+    res.json(results)
+})
+
+// Handle post API request
 app.post('/api/notes', (req, res) => {
     let newId = uniqid()
     req.body.id = newId
 
     console.log("Going to insert new note : ", req.body)
 
+    // Append new note
     notes.push(req.body)
 
     res.json(notes[newId]);
@@ -41,10 +46,12 @@ app.post('/api/notes', (req, res) => {
     )
 });
 
+// Handle delete API request
 app.delete('/api/notes/:id', (req, res) => {
 
     console.log("Going to delete Id : ", req.params.id)
 
+    // Find the note by id for deletion and return error if not found
     const note = notes.find(n => n.id == req.params.id)
     if (!note) return res.status(404).send(`Id ${req.params.id} not found`)
 
@@ -61,6 +68,12 @@ app.delete('/api/notes/:id', (req, res) => {
     )
 });
 
-app.listen(3001, () => {
-    console.log(`API server now on port 3001!`);
+// Handle get wildcard request for invalid paths
+app.get('*', (req, res) => {
+    console.log("Get request for ", req.path)
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.listen(PORT, () => {
+    console.log(`API server now on port ${PORT}!`);
 })
